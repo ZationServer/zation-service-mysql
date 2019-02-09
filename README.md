@@ -1,2 +1,2 @@
 # zation-service-mysql
-Zation service module for the MySql service.
+Zation service module for MySql.

@@ -98,6 +98,9 @@ const res = await bag.mySqlQuery('SELECT * FROM user WHERE id = 1');
 if(res.results[0]){
     return res.results[0];
 }
+else {
+    bag.throwNewTaskError({name : 'userNotFound'})        
+}
 ```
 
 ## License

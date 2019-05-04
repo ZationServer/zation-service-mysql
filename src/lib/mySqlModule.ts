@@ -9,7 +9,7 @@ import {ServiceModule} from "zation-service";
 import {PoolConfig}    from "mysql";
 import {SmallBag}      from "zation-server";
 
-const serviceName = "MySql";
+const serviceName = "MySQL";
 
 export namespace MySqlModule {
 

@@ -74,18 +74,18 @@ interface SmallBagExtension
     // noinspection JSUnusedGlobalSymbols
     /**
      * @description
-     * Make a simple MySQL query.
+     * With this function, you can make a simple promise based MySQL query by using one of your services.
      * Throws an ServiceNotFoundError if the service is not found.
      * @example
      * const res = await mySqlQuery('SELECT 1 + 1 AS solution');
      * const solution = res.results[0];
      * @throws ServiceNotFoundError
      * @param  query
-     * @param  configName
+     * @param  configName Default: 'default'
      * @return Promise<object>
      * The object has 2 fields, one for the result 'result' and one for the fields information 'fields'.
      */
-    mySqlQuery: (query, configName ?: string) => Promise<{ results: any, fields: MySql.FieldInfo[] }>
+    mySqlQuery: (query: string, configName ?: string) => Promise<{ results: any, fields: MySql.FieldInfo[] }>
 
     // noinspection JSMethodCanBeStatic,JSUnusedGlobalSymbols
     /**
@@ -104,17 +104,17 @@ interface SmallBagExtension
     // noinspection JSUnusedGlobalSymbols
     /**
      * @description
-     * Returns this MySQL service, if it exists otherwise, it will throw a ServiceNotFoundError error.
+     * Returns the MySQL service, if it exists otherwise, it will throw a ServiceNotFoundError error.
      * @throws ServiceNotFoundError
-     * @param  configName
+     * @param  configName Default: 'default'
      */
     getMySql(configName ?: string): Promise<MySql.Pool>
 
     // noinspection JSUnusedGlobalSymbols
     /**
      * @description
-     * Checks if the service with this configuration exists.
-     * @param  configName
+     * This function returns a boolean that indicates if the MySQL service with the given configuration name exists.
+     * @param  configName Default: 'default'
      */
     isMySql(configName ?: string): boolean
 }

@@ -20,7 +20,7 @@
 </h1>
 
 ## What is Zation-service-mysql?
-***Zation-service-mysql*** is a zation service module wrapper of the npm package [mysql](https://www.npmjs.com/package/mysql) for creating connections to MySQL servers.  
+***Zation-service-mysql*** is a zation service module wrapper of the npm package [mysql](https://www.npmjs.com/package/mysql) for creating connections to MySQL servers.
 This module will automatically create connection pools with your provided configurations on each worker. 
 Also, it will add new functionality to the SmallBag and Bag for easy accessing your databases.
 

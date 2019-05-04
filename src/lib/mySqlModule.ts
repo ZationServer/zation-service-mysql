@@ -75,7 +75,7 @@ interface SmallBagExtension
     /**
      * @description
      * With this function, you can make a simple promise based MySQL query by using one of your services.
-     * Throws an ServiceNotFoundError if the service is not found.
+     * Throws a ServiceNotFoundError if the service is not found.
      * @example
      * const res = await mySqlQuery('SELECT 1 + 1 AS solution');
      * const solution = res.results[0];

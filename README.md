@@ -83,14 +83,14 @@ It takes a config name as an argument if you don't provide one it will use the d
 If you don't provide a config name, it will use the default name.
 
 * `mySqlFormat` (`Function (query: string, inserts: any[], stringifyObjects?: boolean, timeZone?: string) => string`) - With this function, you can format mysql queries to escaping query values. 
-Its the same function as the format function in the mysql npm package.
+Its the same function as the format function from the mysql npm package. 
 ```typescript
 const sql = smallBag.mySqlFormat('SELECT * FROM posts WHERE id = ?', [42]);
 console.log(sql); // SELECT * FROM posts WHERE id = 42
 ```
 
 * `mySqlQuery` (`Function (query : string, configName ?: string) => Promise<{ results: any, fields: MySql.FieldInfo[] }>`) - With this function, you can make a simple promise based MySQL query by using one of your services. 
-Notice that this function can throw a ServiceNotFoundError if the MySQL is not found. 
+Notice that this function can throw a ServiceNotFoundError if the MySQL service with the config name is not found. 
 The function takes a query and the config name as an argument. 
 If you don't provide a config name, it will use the default name.
 ```typescript

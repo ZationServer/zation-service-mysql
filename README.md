@@ -37,7 +37,7 @@ Therefore you must use the build method, and this method requires a configuratio
 In the configuration argument, you can define different database connection configurations linked to a name (configName). 
 The connection settings are the same as in the npm module [mysql](https://www.npmjs.com/package/mysql).  
 If you only want to specify one connection setting or 
-you have a primary connection setting that you will use the most its recommended to use the default config name for it.
+you have a primary connection setting that you will use the most it is recommended to use the default config name for it.
 That will make it later easier to access your connection because you don't have to provide every time the config name.
 
 ```typescript
@@ -65,7 +65,7 @@ module.exports = Config.serviceConfig(
         })]
     });
 ```
-In this example code, each worker of the zation server will create two connection pools in the start with these two configurations. 
+In this example code, each worker of the zation server will create two connection pools in the start process with the two configurations.
 After the launch, these two pools can be accessed by using a SmallBag or Bag. 
 If something goes wrong by creating the connection, the server won't start or notify you with a console.log it depends on your configurations of the server.
 

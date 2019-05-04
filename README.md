@@ -37,7 +37,7 @@ Therefore you must use the build method, and this method requires a configuratio
 In the configuration argument, you can define different database connection configurations linked to a name (configName). 
 The connection settings are the same as in the npm module [mysql](https://www.npmjs.com/package/mysql).  
 If you only want to specify one connection setting or 
-you have a primary connection setting that you will use the most its recommended to use the default config name for it.  
+you have a primary connection setting that you will use the most its recommended to use the default config name for it.
 That will make it later easier to access your connection because you don't have to provide every time the config name.
 
 ```typescript
@@ -83,7 +83,7 @@ It takes a config name as an argument if you don't provide one it will use the d
 If you don't provide a config name, it will use the default name.
 
 * `mySqlFormat` (`Function (query: string, inserts: any[], stringifyObjects?: boolean, timeZone?: string) => string`) - With this function, you can format mysql queries to escaping query values. 
-Its the same function as in the mysql npm package format function. 
+Its the same function as the format function in the mysql npm package.
 ```typescript
 const sql = smallBag.mySqlFormat('SELECT * FROM posts WHERE id = ?', [42]);
 console.log(sql); // SELECT * FROM posts WHERE id = 42

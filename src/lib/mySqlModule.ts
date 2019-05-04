@@ -122,6 +122,5 @@ declare module 'zation-server' {
          */
         isMySql(serviceKey ?: string): boolean
     }
-    export interface Bag{
-    }
 }
+

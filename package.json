@@ -1,6 +1,6 @@
 {
   "name": "zation-service-mysql",
-  "version": "0.2.7",
+  "version": "0.2.8",
   "license": "MIT",
   "description": "Zation service module for MySql.",
   "main": "dist/index.js",
@@ -23,7 +23,7 @@
   },
   "dependencies": {
     "zation-server": ">=0.8.0",
-    "zation-service": "^0.3.3",
+    "zation-service": "^0.3.4",
     "@types/mysql": "^2.15.5",
     "mysql": "^2.17.1"
   },

@@ -91,7 +91,7 @@ console.log(sql); // SELECT * FROM posts WHERE id = 42
 
 * `mySqlQuery` (`Function (query : string, configName ?: string) => Promise<{ results: any, fields: MySql.FieldInfo[] }>`) - With this function, you can make a simple promise based MySQL query by using one of your services. 
 Notice that this function can throw a ServiceNotFoundError if the MySQL service with the config name is not found. 
-The function takes a query and the config name as an argument. 
+The function takes a query and the config name as arguments.
 If you don't provide a config name, it will use the default name.
 ```typescript
 const res = await bag.mySqlQuery('SELECT * FROM user WHERE id = 1');

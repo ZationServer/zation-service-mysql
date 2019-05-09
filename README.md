@@ -99,7 +99,7 @@ if(res.results[0]){
     return res.results[0];
 }
 else {
-    bag.throwNewTaskError({name : 'userNotFound'})        
+    bag.throwNewBackError({name : 'userNotFound'})        
 }
 ```
 

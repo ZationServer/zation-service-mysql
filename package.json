@@ -22,7 +22,7 @@
     "url": "https://luca.scaringella.de"
   },
   "dependencies": {
-    "zation-server": ">=0.8.0",
+    "zation-server": ">=0.9.8",
     "zation-service": "^0.3.4",
     "@types/mysql": "^2.15.5",
     "mysql": "^2.17.1"

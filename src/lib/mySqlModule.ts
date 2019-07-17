@@ -7,13 +7,13 @@ GitHub: LucaCode
 import MySql         = require("mysql");
 import {ServiceModule} from "zation-service";
 import {PoolConfig}    from "mysql";
-import {SmallBag}      from "zation-server";
+import {Bag}           from "zation-server";
 
 const serviceName = "MySQL";
 
 export namespace MySqlModule {
 
-    export function build(configs: Record<string, PoolConfig> | DefaultConfig<PoolConfig>): ServiceModule<PoolConfig, MySql.Pool,{},SmallBagExtension> {
+    export function build(configs: Record<string, PoolConfig> | DefaultConfig<PoolConfig>): ServiceModule<PoolConfig, MySql.Pool,{},BagExtension> {
         const service: any = configs;
         service.get = undefined;
         service.create = async (c: PoolConfig): Promise<MySql.Pool> => {
@@ -36,8 +36,8 @@ export namespace MySqlModule {
             serviceName: serviceName,
             service: service,
             bagExtensions: {
-                smallBag : {
-                    mySqlQuery : async function (this : SmallBag,query ,configName : string = 'default') : Promise<{results : any,fields : MySql.FieldInfo[]}> {
+                bag : {
+                    mySqlQuery : async function (this : Bag,query ,configName : string = 'default') : Promise<{results : any,fields : MySql.FieldInfo[]}> {
                         return new Promise<{results : any,fields : MySql.FieldInfo[]}>(async (resolve, reject) =>
                         {
                             (await this.getService<MySql.Pool>(serviceName,configName)).
@@ -50,11 +50,11 @@ export namespace MySqlModule {
                     mySqlFormat : function(query: string, inserts: any[], stringifyObjects?: boolean, timeZone?: string) : string {
                         return MySql.format(query,inserts,stringifyObjects,timeZone);
                     },
-                    getMySql : async function(this : SmallBag,configName : string = 'default') : Promise<MySql.Pool>
+                    getMySql : async function(this : Bag,configName : string = 'default') : Promise<MySql.Pool>
                     {
                         return await this.getService<MySql.Pool>(serviceName,configName);
                     },
-                    isMySql : function (this : SmallBag,configName : string = 'default') : boolean
+                    isMySql : function (this : Bag,configName : string = 'default') : boolean
                     {
                         return this.isService(serviceName,configName);
                     }
@@ -69,7 +69,7 @@ interface DefaultConfig<T> {
     default?: T;
 }
 
-interface SmallBagExtension
+interface BagExtension
 {
     // noinspection JSUnusedGlobalSymbols
     /**
@@ -120,6 +120,6 @@ interface SmallBagExtension
 }
 
 declare module 'zation-server' {
-    export interface SmallBag extends SmallBagExtension {
+    export interface Bag extends BagExtension {
     }
 }

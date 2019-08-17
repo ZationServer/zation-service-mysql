@@ -1,13 +1,13 @@
 /*
 Author: Luca Scaringella
 GitHub: LucaCode
-©Copyright by Luca Scaringella
+Copyright(c) Luca Scaringella
  */
 
-import MySql         = require("mysql");
-import {ServiceModule} from "zation-service";
-import {PoolConfig}    from "mysql";
-import {Bag}           from "zation-server";
+import MySql            = require("mysql");
+import {ServiceModule}    from "zation-service";
+import {PoolConfig}       from "mysql";
+import {Bag,RequestBag}   from "zation-server";
 
 const serviceName = "MySQL";
 
@@ -120,6 +120,7 @@ interface BagExtension
 }
 
 declare module 'zation-server' {
-    export interface Bag extends BagExtension {
-    }
+    export interface Bag extends BagExtension {}
+    export interface RequestBag extends BagExtension {}
 }
+

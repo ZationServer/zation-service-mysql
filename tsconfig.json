@@ -10,7 +10,7 @@
     "removeComments": false,
     "noImplicitAny": false,
     "declaration": true,
-    "outDir": "assets",
+    "outDir": "dist",
     "strict": true
   },
   "include": [

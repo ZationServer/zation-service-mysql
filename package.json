@@ -6,8 +6,10 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
+    "build": "npm run compile",
+    "compile": "rm -rf dist/ && tsc -p ./",
     "prepublishOnly": "npm run build",
-    "build": "gulp compile"
+    "pretest": "npm run build"
   },
   "repository": {
     "type": "git",
@@ -29,8 +31,6 @@
     "mysql": "^2.18.1"
   },
   "devDependencies": {
-    "gulp": "4.0.1",
-    "gulp-typescript": "^5.0.0",
     "typescript": "^3.8.3"
   }
 }

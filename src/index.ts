@@ -4,7 +4,8 @@ GitHub: LucaCode
 Copyright(c) Luca Scaringella
  */
 
-import {MySqlModule} from "./lib/mySqlModule";
+import './lib/mySqlBagExtension';
+import {MySqlPackage} from "./lib/mySqlPackage";
 // noinspection JSUnusedGlobalSymbols
-export default MySqlModule;
+export default MySqlPackage;
 

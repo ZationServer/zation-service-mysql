@@ -22,14 +22,15 @@
     "url": "https://luca.scaringella.de"
   },
   "dependencies": {
-    "zation-server": ">=1.1.6",
-    "zation-service": "^0.3.7",
-    "@types/mysql": "^2.15.5",
-    "mysql": "^2.17.1"
+    "zation-server": ">=1.5.2",
+    "zation-service": "^0.4.3",
+    "zation-bag-extension": "^1.3.5",
+    "@types/mysql": "^2.15.9",
+    "mysql": "^2.18.1"
   },
   "devDependencies": {
     "gulp": "4.0.1",
     "gulp-typescript": "^5.0.0",
-    "typescript": "^3.3.3"
+    "typescript": "^3.8.3"
   }
 }

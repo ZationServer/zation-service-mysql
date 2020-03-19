@@ -1,6 +1,6 @@
 {
   "name": "zation-service-mysql",
-  "version": "0.3.3",
+  "version": "0.3.4",
   "license": "MIT",
   "description": "Zation service for MySql.",
   "main": "dist/index.js",

@@ -5,7 +5,7 @@ Copyright(c) Luca Scaringella
  */
 
 import './lib/mySqlBagExtension';
-import {MySqlPackage} from "./lib/mySqlPackage";
+import {MySqlService} from "./lib/mySqlService";
 // noinspection JSUnusedGlobalSymbols
-export default MySqlPackage;
+export default MySqlService;
 

@@ -9,7 +9,7 @@ import {ServicePackage,DefaultInstance} from "zation-service";
 import {PoolConfig}                     from "mysql";
 import {serviceName}                    from "./constants";
 
-export namespace MySqlPackage {
+export namespace MySqlService {
 
     /**
      * This build function creates a mySql service package with

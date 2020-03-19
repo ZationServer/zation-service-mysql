@@ -1,5 +1,5 @@
 # zation-service-mysql ⚙️
-*Zation service module for MySQL*
+*Zation service for MySQL*
 <h1 align="center">  
   <!-- Stability -->
   <a href="https://nodejs.org/api/documentation.html#documentation_stability_index">
@@ -20,9 +20,9 @@
 </h1>
 
 ## What is Zation-service-mysql?
-***Zation-service-mysql*** is a zation service module wrapper of the npm package [mysql](https://www.npmjs.com/package/mysql) for creating connections to MySQL servers.
-This module will automatically create connection pools with your provided configurations on each worker. 
-Also, it will add new functionality to the SmallBag and Bag for easy accessing your databases.
+***Zation-service-mysql*** is a zation service wrapper of the npm package [mysql](https://www.npmjs.com/package/mysql) for creating connections to MySQL servers.
+This service will automatically create connection pools with your provided instances configurations on each worker.
+Also, it will add new functionality to the Bag and RequestBag for easy accessing your databases.
 
 ## Install
 
@@ -32,67 +32,66 @@ $ npm install --save zation-service-mysql
 
 ## Usage
 
-To use this module, you have to define it in the service configuration of your zation server. 
-Therefore you must use the build method, and this method requires a configuration argument. 
-In the configuration argument, you can define different database connection configurations linked to a name (configName). 
+To use this service, you have to define it in the service configuration of your zation server.
+Therefore you must use the build method, and this method requires an instances argument.
+In this argument, you can define different database connection configurations linked to a name (instanceName).
 The connection settings are the same as in the npm module [mysql](https://www.npmjs.com/package/mysql).  
 If you only want to specify one connection setting or 
-you have a primary connection setting that you will use the most it is recommended to use the default config name for it.
-That will make it later easier to access your connection because you don't have to provide every time the config name.
+you have a primary connection setting that you will use the most it is recommended to use the default instance name for it.
+That will make it later easier to access your connection because you don't have to provide every time the instance name.
 
 ```typescript
 import {Config}         from 'zation-server';
-import MySqlModule      from "zation-service-mysql";
+import MySqlService     from "zation-service-mysql";
 
-module.exports = Config.serviceConfig(
-    { 
-        serviceModules : [
-        MySqlModule.build({
-            default : {
-                port : 3306,
-                database : 'MyFirstDatabase',
-                user : process.env.DB_USER,
-                password : process.env.DB_PASSWORD,
-                charset : 'utf8mb4_unicode_ci'
-            },
-            secondDb : {
-                port : 3307,
-                database : 'MySecondDatabase',
-                user : process.env.DB_SECOND_USER,
-                password : process.env.DB_SECOND_PASSWORD,
-                charset : 'utf8mb4_unicode_ci'
-            }
-        })]
-    });
+export default Config.serviceConfig({
+    ...MySqlService.build({
+        default : {
+            port : 3306,
+            database : 'MyFirstDatabase',
+            user : process.env.DB_USER,
+            password : process.env.DB_PASSWORD,
+            charset : 'utf8mb4_unicode_ci'
+        },
+        secondDb : {
+            port : 3307,
+            database : 'MySecondDatabase',
+            user : process.env.DB_SECOND_USER,
+            password : process.env.DB_SECOND_PASSWORD,
+            charset : 'utf8mb4_unicode_ci'
+        }
+    })
+});
 ```
 In this example code, each worker of the zation server will create two connection pools in the start process with the two configurations.
-After the launch, these two pools can be accessed by using a SmallBag or Bag. 
-If something goes wrong by creating the connection, the server won't start or notify you with a console.log it depends on your configurations of the server.
+After the launch, these two pools can be accessed by using a Bag or RequestBag.
+If something goes wrong by creating these connections,
+the server won't start or notify you with a log it depends on your configuration of the server.
 
 ### Access 
-For access to your connections, you can use one of these new functionalities that will be added to the SmallBag class. 
-Notice that this module also adds the typescript definitions and 
-that you can use these methods even on the Bag class because the Bag is extending the SmallBag.
+For access to your connections, you can use one of these new functionalities that will be added to the Bag class.
+Notice that this service also adds the typescript definitions and
+that you can use these methods even on the RequestBag class because the RequestBag is extending the Bag.
 The new functionalities:
 
-* `getMySql` (`Function (configName ?: string): Promise<MySql.Pool>`) - This function returns the MySQL service as a MySql.Pool, 
+* `getMySql` (`Function (instanceName?: string): Promise<MySql.Pool>`) - This function returns the MySQL service instance as a MySql.Pool,
 if it exists otherwise, it will throw a ServiceNotFoundError error. 
-It takes a config name as an argument if you don't provide one it will use the default config name. 
+It takes a instance name as an argument if you don't provide one it will use the default instance name.
                                 
-* `isMySql` (`Function (configName ?: string): boolean`) - This function returns a boolean that indicates if the MySql service with the given configuration name exists. 
-If you don't provide a config name, it will use the default name.
+* `hasMySql` (`Function (instanceName?: string): boolean`) - This function returns a boolean that indicates if the MySQL service instance exists.
+If you don't provide a instance name, it will use the default instance name.
 
 * `mySqlFormat` (`Function (query: string, inserts: any[], stringifyObjects?: boolean, timeZone?: string) => string`) - With this function, you can format mysql queries to escaping query values. 
 Its the same function as the format function from the mysql npm package. 
 ```typescript
-const sql = smallBag.mySqlFormat('SELECT * FROM posts WHERE id = ?', [42]);
+const sql = bag.mySqlFormat('SELECT * FROM posts WHERE id = ?', [42]);
 console.log(sql); // SELECT * FROM posts WHERE id = 42
 ```
 
-* `mySqlQuery` (`Function (query : string, configName ?: string) => Promise<{ results: any, fields: MySql.FieldInfo[] }>`) - With this function, you can make a simple promise based MySQL query by using one of your services. 
-Notice that this function can throw a ServiceNotFoundError if the MySQL service with the config name is not found. 
-The function takes a query and the config name as arguments.
-If you don't provide a config name, it will use the default name.
+* `mySqlQuery` (`Function (query: string, instanceName?: string) => Promise<{ results: any, fields: MySql.FieldInfo[] }>`) - With this function, you can make a simple promise based MySQL query by using one of your service instances.
+Notice that this function can throw a ServiceNotFoundError error if the MySQL service with the instance name is not found.
+The function takes a query and the instance name as arguments.
+If you don't provide a instance name, it will use the default instance name.
 ```typescript
 const res = await bag.mySqlQuery('SELECT * FROM user WHERE id = 1');
 if(res.results[0]){

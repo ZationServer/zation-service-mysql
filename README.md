@@ -46,19 +46,19 @@ import MySqlService     from "zation-service-mysql";
 
 export default Config.serviceConfig({
     ...MySqlService.build({
-        default : {
-            port : 3306,
-            database : 'MyFirstDatabase',
-            user : process.env.DB_USER,
-            password : process.env.DB_PASSWORD,
-            charset : 'utf8mb4_unicode_ci'
+        default: {
+            port: 3306,
+            database: 'MyFirstDatabase',
+            user: process.env.DB_USER,
+            password: process.env.DB_PASSWORD,
+            charset: 'utf8mb4_unicode_ci'
         },
-        secondDb : {
-            port : 3307,
-            database : 'MySecondDatabase',
-            user : process.env.DB_SECOND_USER,
-            password : process.env.DB_SECOND_PASSWORD,
-            charset : 'utf8mb4_unicode_ci'
+        secondDb: {
+            port: 3307,
+            database: 'MySecondDatabase',
+            user: process.env.DB_SECOND_USER,
+            password: process.env.DB_SECOND_PASSWORD,
+            charset: 'utf8mb4_unicode_ci'
         }
     })
 });

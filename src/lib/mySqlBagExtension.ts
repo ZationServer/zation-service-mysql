@@ -64,12 +64,11 @@ interface BagExtension
 
 declare module 'zation-server' {
     export interface Bag extends BagExtension {}
-    export interface RequestBag extends BagExtension {}
 }
 
 registerBagExtension({
     name: serviceName,
-    bag: {
+    properties: {
         mySqlQuery: async function (this: Bag,query ,instanceName: string = 'default'): Promise<{results: any,fields: MySql.FieldInfo[]}> {
             return new Promise<{results: any,fields: MySql.FieldInfo[]}>(async (resolve, reject) => {
                 (await this.getService<MySql.Pool>(serviceName,instanceName)).

@@ -26,7 +26,7 @@
   "dependencies": {
     "zation-server": ">=1.5.2",
     "zation-service": "^0.4.3",
-    "zation-bag-extension": "^1.3.5",
+    "zation-bag-extension": "^1.4.0",
     "@types/mysql": "^2.15.9",
     "mysql": "^2.18.1"
   },

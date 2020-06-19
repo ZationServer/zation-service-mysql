@@ -22,7 +22,7 @@
 ## What is Zation-service-mysql?
 ***Zation-service-mysql*** is a zation service wrapper of the npm package [mysql](https://www.npmjs.com/package/mysql) for creating connections to MySQL servers.
 This service will automatically create connection pools with your provided instance configurations on each worker.
-Also, it will add new functionality to the Bag and RequestBag for easy accessing your databases.
+Also, it will add new functionality to the Bag for easy accessing your databases.
 
 ## Install
 
@@ -31,9 +31,8 @@ $ npm install --save zation-service-mysql
 ```
 
 ## Usage
-
 To use this service, you have to define it in the service configuration of your zation server.
-Therefore you must use the build method, and this method requires an instances argument.
+To do this, you use the default exported function that requires an instances argument.
 In this argument, you can define different database connection configurations linked to a name (instanceName).
 The connection settings are the same as in the npm module [mysql](https://www.npmjs.com/package/mysql).  
 If you only want to specify one connection setting or 
@@ -45,7 +44,7 @@ import {Config}         from 'zation-server';
 import MySqlService     from "zation-service-mysql";
 
 export default Config.serviceConfig({
-    ...MySqlService.build({
+    ...MySqlService({
         default: {
             port: 3306,
             database: 'MyFirstDatabase',
@@ -64,14 +63,13 @@ export default Config.serviceConfig({
 });
 ```
 In this example code, each worker of the zation server will create two connection pools in the start process with the two configurations.
-After the launch, these two pools can be accessed by using a Bag or RequestBag.
+After the launch, these two pools can be accessed by using the Bag.
 If something goes wrong by creating these connections,
 the server won't start or notify you with a log it depends on your configuration of the server.
 
 ### Access 
-For access to your connections, you can use one of these new functionalities that will be added to the Bag class.
-Notice that this service also adds the typescript definitions and
-that you can use these methods even on the RequestBag class because the RequestBag is extending the Bag.
+To access your connections, you can use one of these new functionalities that will be added to the Bag class.
+Notice that this service also adds the typescript definitions.
 The new functionalities:
 
 * `getMySql` (`Function (instanceName?: string): Promise<MySql.Pool>`) - This function returns the MySQL service instance as a MySql.Pool,

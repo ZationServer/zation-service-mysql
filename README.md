@@ -100,12 +100,8 @@ The function takes a query and the instance name as arguments.
 If you don't provide a instance name, it will use the default instance name.
 ```typescript
 const res = await bag.mySqlQuery('SELECT * FROM user WHERE id = 1');
-if(res.results[0]){
-    return res.results[0];
-}
-else {
-    bag.throwNewBackError({name : 'userNotFound'})
-}
+if(res.results[0]) return res.results[0];
+else throw new BackError("UserNotFound");
 ```
 
 ## License

@@ -16,7 +16,8 @@
     "url": "https://github.com/ZationServer/zation-service-mysql.git"
   },
   "files": [
-    "dist/**/*"
+    "dist/**/*",
+    "!.DS_Store"
   ],
   "author": {
     "name": "Ing. Luca Gian Scaringella",

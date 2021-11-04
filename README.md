@@ -42,7 +42,7 @@ $ npm install --save zation-service-mysql
 
 ## Usage
 To use this service, you have to define it in the services configuration of your zation server.
-To do this, you use the default exported function that requires an instances argument.
+To do this, use the default exported function that requires an instances argument.
 In this argument, you can define different database connection configurations linked to a name (instanceName).
 The connection settings are the same as in the npm module [mysql](https://www.npmjs.com/package/mysql).
 If you only want to specify one connection setting or
@@ -50,7 +50,7 @@ you have a primary connection setting that you will use the most it is recommend
 That will make it later easier to access your connection because you don't have to provide every time the instance name.
 
 ```typescript
-import {Config}         from 'zation-server';
+import {Config}         from "zation-server";
 import MySqlService     from "zation-service-mysql";
 
 export default Config.servicesConfig({

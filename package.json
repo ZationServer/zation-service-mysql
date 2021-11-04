@@ -19,9 +19,8 @@
     "dist/**/*"
   ],
   "author": {
-    "name": "Luca Scarignella",
-    "email": "lucacode1@gmail.com",
-    "url": "https://luca.scaringella.de"
+    "name": "Ing. Luca Gian Scaringella",
+    "email": "lucacode1@gmail.com"
   },
   "dependencies": {
     "zation-server": ">=1.7.0",
